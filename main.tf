@@ -14,8 +14,8 @@ provider "azurerm" {
 
 # Create a resource group for the AKS cluster
 resource "azurerm_resource_group" "aks_rg" {
-  name     = "aks-demo-rg"
-  location = "eastus"
+  name     = "cst8918-w25-h09-rg"
+  location = "canadacentral"
 }
 
 # Get latest Kubernetes version available
@@ -25,10 +25,10 @@ data "azurerm_kubernetes_service_versions" "current" {
 
 # Create AKS cluster
 resource "azurerm_kubernetes_cluster" "app" {
-  name                = "aks-demo-cluster"
+  name                = "cst8918-w25-h09-aks"
   location            = azurerm_resource_group.aks_rg.location
   resource_group_name = azurerm_resource_group.aks_rg.name
-  dns_prefix          = "aks-demo"
+  dns_prefix          = "cst8918-w25-h09"
   kubernetes_version  = data.azurerm_kubernetes_service_versions.current.latest_version
 
   default_node_pool {
@@ -46,7 +46,7 @@ resource "azurerm_kubernetes_cluster" "app" {
 
   tags = {
     Environment = "Development"
-    Project     = "AKS Demo"
+    Project     = "CST8918-H09"
   }
 }
 
