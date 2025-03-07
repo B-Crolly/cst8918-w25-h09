@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "app" {
     vm_size             = "Standard_B2s"
     min_count           = 1
     max_count           = 3
-    auto_scaling_enabled = true
+    enable_auto_scaling = true
     type                = "VirtualMachineScaleSets"
   }
 
